@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Genesis Block Advisory</title>
+  <meta name="description" content="Australia's first regulatory affairs boutique specialising in virtual assets." />
+
+
+
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES — edit brand colours here
+    ============================================================ */
+    :root {
+      --black:   #0a0a0a;
+      --white:   #ffffff;
+      --orange:  #F7931A;
+      --orange-light: #fdb155;
+      --grey-100: #f5f5f5;
+      --grey-200: #e8e8e8;
+      --grey-400: #9a9a9a;
+      --grey-700: #3a3a3a;
+      --font-sans: 'Century Gothic', 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+      --font-serif: 'Century Gothic', 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+      --max-width: 1200px;
+      --section-pad: 100px 24px;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--white);
+      color: var(--black);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--orange); }
+
+    /* ============================================================
+       UTILITY
+    ============================================================ */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .orange { color: var(--orange); }
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--orange);
+      margin: 20px 0 32px;
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ -->
+    /* Edit nav links in the <nav> HTML below */
+    ============================================================ */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--grey-200);
+    }
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--orange); }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--grey-700);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta {
+      font-size: 13px;
+      font-weight: 600;
+      background: var(--orange);
+      color: var(--white) !important;
+      padding: 10px 20px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--orange-light) !important; color: var(--white) !important; }
+
+    /* ============================================================
+       SECTION 1 — HERO
+       Edit headline, subheading, and stat figures below
+    ============================================================ */
+    #hero {
+      padding: 90px 24px 80px;
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 20px;
+    }
+    .hero-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(38px, 6vw, 72px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .hero-tagline {
+      font-size: clamp(16px, 2vw, 20px);
+      color: rgba(255,255,255,0.7);
+      max-width: 600px;
+      margin: 0 auto 56px;
+      font-weight: 300;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      max-width: 900px;
+      margin: 0 auto;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .hero-stat {
+      flex: 1;
+      min-width: 200px;
+      padding: 32px 24px;
+      border-right: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-number {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 4vw, 44px);
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .hero-stat-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.4;
+    }
+
+    /* ============================================================
+       SECTION 2 — ABOUT & BIO (two-column)
+       Edit About GB copy and Chloe bio copy in the HTML below
+    ============================================================ */
+    #about {
+      padding: var(--section-pad);
+      background: var(--white);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .about-col h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 3vw, 36px);
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .about-col p {
+      color: var(--grey-700);
+      margin-bottom: 16px;
+    }
+    .about-col p:last-of-type { margin-bottom: 0; }
+    .about-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 240px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--black);
+      background: #FFE234;
+      padding: 12px 18px;
+      margin-top: 16px;
+      margin-right: 12px;
+      letter-spacing: 0.01em;
+      transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
+      box-shadow: 2px 2px 0px 0px var(--black);
+    }
+    .about-link:hover {
+      color: var(--black);
+      background: #ffd000;
+      transform: translate(-1px, -1px);
+      box-shadow: 3px 3px 0px 0px var(--black);
+    }
+    .award-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .award-chip {
+      font-size: 12px;
+      font-weight: 500;
+      background: var(--grey-100);
+      color: var(--grey-700);
+      padding: 5px 12px;
+      border-radius: 100px;
+      border: 1px solid var(--grey-200);
+    }
+    .award-chip.highlight {
+      background: #fff4e6;
+      color: var(--orange);
+      border-color: #fdd9a0;
+    }
+
+    /* ============================================================
+       SECTION 3 — INFOGRAPHICS
+       Replace placeholder <img> src attributes with your image paths
+    ============================================================ */
+    #infographics {
+      padding: var(--section-pad);
+      background: var(--grey-100);
+    }
+    #infographics h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 3vw, 36px);
+      text-align: center;
+      margin-bottom: 6px;
+    }
+    #infographics > .container > p {
+      text-align: center;
+      color: var(--grey-400);
+      margin-bottom: 48px;
+    }
+    /* ============================================================
+       CHART — Commercial Clients Column Chart
+    ============================================================ */
+    .chart-wrapper {
+      background: var(--black);
+      border-radius: 12px;
+      padding: 56px 56px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .chart-title {
+      font-family: var(--font-serif);
+      font-size: clamp(18px, 2.4vw, 26px);
+      font-weight: 700;
+      color: var(--white);
+      text-align: center;
+      margin-bottom: 48px;
+      letter-spacing: -0.01em;
+    }
+    .chart-area {
+      display: flex;
+      align-items: flex-end;
+      gap: 0;
+      position: relative;
+      /* 320px bar zone + label zone is handled by col-group overflow */
+      padding-left: 52px;
+    }
+    /* Y-axis label */
+    .y-axis-label {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%) rotate(-90deg);
+      transform-origin: center center;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      white-space: nowrap;
+      width: 200px;
+      text-align: center;
+      margin-left: -74px;
+    }
+    /* Gridlines — positioned relative to bar zone (320px = 8 units, 40px per unit) */
+    .gridlines {
+      position: absolute;
+      left: 52px;
+      right: 0;
+      /* align bottom of gridlines container with bottom of tallest bar area */
+      bottom: 0;
+      height: 320px;
+      pointer-events: none;
+    }
+    .gridline {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    /* Columns container */
+    .columns {
+      display: flex;
+      align-items: flex-end;
+      gap: 24px;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+    .col-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      position: relative;
+    }
+    /* Inner bar-stack sits at bottom of the col-group, above the label */
+    .col-bar-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      margin-top: auto; /* pushes the whole stack to the bottom */
+    }
+    /* Value label above bar */
+    .col-value {
+      font-family: var(--font-serif);
+      font-size: clamp(22px, 3vw, 36px);
+      font-weight: 700;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    /* The bar itself */
+    .col-bar {
+      width: 100%;
+      background: linear-gradient(180deg, var(--orange) 0%, #c96d00 100%);
+      border-radius: 4px 4px 0 0;
+      position: relative;
+      transition: opacity 0.2s;
+      min-height: 4px;
+    }
+    .col-bar::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--orange-light);
+      border-radius: 4px 4px 0 0;
+      opacity: 0.6;
+    }
+    .col-bar:hover { opacity: 0.88; }
+    /* Category label below bar */
+    .col-label {
+      font-size: clamp(10px, 1.1vw, 13px);
+      font-weight: 600;
+      color: rgba(255,255,255,0.65);
+      text-align: center;
+      margin-top: 14px;
+      letter-spacing: 0.02em;
+      line-height: 1.35;
+      flex-shrink: 0;
+    }
+    /* Chart caption */
+    .chart-caption {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      text-align: center;
+      margin-top: 32px;
+      line-height: 1.6;
+      font-style: italic;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 768px) {
+      .chart-wrapper { padding: 36px 16px 28px; }
+      /* Hide the rotated y-axis label — it overflows on narrow screens
+         and the chart title already provides sufficient context */
+      .y-axis-label { display: none; }
+      .chart-area { padding-left: 0; }
+      .columns { gap: 8px; }
+      .col-bar { border-radius: 3px 3px 0 0; }
+      /* Scale bars proportionally on mobile: multiply heights by 0.6 */
+      .col-bar[style*="height:200px"] { height: 120px !important; }
+      .col-bar[style*="height:120px"] { height: 72px !important; }
+      .col-bar[style*="height:80px"]  { height: 48px !important; }
+      .col-bar[style*="height:240px"] { height: 144px !important; }
+      .gridlines { height: 192px; left: 0; }
+      .gridlines .gridline:nth-child(1) { bottom: 48px !important; }
+      .gridlines .gridline:nth-child(2) { bottom: 96px !important; }
+      .gridlines .gridline:nth-child(3) { bottom: 144px !important; }
+      .gridlines .gridline:nth-child(4) { bottom: 192px !important; }
+    }
+
+    /* ============================================================
+       SECTION 4 — PITCH DECK
+       The deck is embedded as a full-page PDF/iframe.
+       To embed a PDF: src="your-deck.pdf"
+       To embed Google Slides: use the published embed URL
+       To embed a PPTX viewer: use OneDrive/SharePoint embed URL
+    ============================================================ */
+    #deck {
+      padding: var(--section-pad);
+      background: var(--white);
+    }
+    #deck h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 3vw, 36px);
+      margin-bottom: 6px;
+    }
+    #deck > .container > p {
+      color: var(--grey-700);
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+    .deck-embed {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border: 1px solid var(--grey-200);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--grey-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .deck-embed iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .deck-placeholder {
+      text-align: center;
+      color: var(--grey-400);
+      font-size: 14px;
+    }
+    .deck-placeholder svg {
+      width: 48px;
+      height: 48px;
+      stroke: var(--grey-200);
+      margin-bottom: 12px;
+    }
+
+
+    /* ============================================================
+       SECTION 6 — CONTACT
+       Edit contact copy and links in the HTML below
+    ============================================================ */
+    #contact {
+      padding: var(--section-pad);
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+    }
+    #contact h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 4vw, 48px);
+      margin-bottom: 16px;
+    }
+    #contact p {
+      color: rgba(255,255,255,0.65);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      font-size: 17px;
+    }
+    .contact-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 4px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+    }
+    .btn-primary:hover { background: var(--orange-light); color: var(--white); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .btn-secondary:hover { border-color: var(--orange); color: var(--orange); }
+
+    /* ============================================================
+       AS FEATURED IN — TICKER
+       Edit outlet names in the ticker HTML below
+    ============================================================ */
+    .ticker-bar {
+      background: var(--black);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      padding: 14px 0;
+      white-space: nowrap;
+    }
+    .ticker-track {
+      display: inline-flex;
+      animation: ticker 30s linear infinite;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      padding: 0 40px;
+    }
+    .ticker-outlet {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      padding: 0 32px;
+    }
+    .ticker-dot {
+      color: var(--orange);
+      opacity: 0.5;
+    }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--black);
+      color: rgba(255,255,255,0.35);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 12px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    footer a { color: rgba(255,255,255,0.35); }
+    footer a:hover { color: var(--orange); }
+
+    /* ============================================================
+       DECK MOBILE FALLBACK
+       On small screens the PDF iframe can't meaningfully scale,
+       so we swap it for a direct link button.
+    ============================================================ */
+    .deck-mobile-cta {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 48px 24px;
+      text-align: center;
+    }
+    .deck-mobile-cta p {
+      font-size: 14px;
+      color: var(--grey-400);
+      margin: 0;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 768px) {
+      :root { --section-pad: 60px 24px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .infographic-grid { grid-template-columns: 1fr; }
+      .hero-stat { min-width: 160px; }
+      .nav-links { display: none; }
+    }
+
+    /* Pitch deck: replace iframe with a direct link on narrow screens */
+    @media (max-width: 640px) {
+      .deck-embed iframe { display: none; }
+      .deck-mobile-cta { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+       To edit nav links: change the text and href attributes below
+  ============================================================ -->
+  <nav>
+    <div class="nav-inner">
+      <!-- LOGO: Once you drop your logo file into the folder, set the src below.
+           Supported formats: PNG, SVG, JPG. Recommended height: 36–44px.
+           The alt text and fallback <span> will show if the image fails to load. -->
+      <a href="#hero" class="nav-logo">
+        <img src="gb-logo.png" alt="Genesis Block Advisory" style="height:40px;width:auto;display:block;"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='inline';" />
+        <span style="display:none;">Genesis <span style="color:var(--orange);">Block</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#infographics">Impact</a></li>
+        <li><a href="#deck">Capabilities</a></li>
+        <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       SECTION 1: HERO
+       To edit: change the headline, tagline, and stat figures/labels
+  ============================================================ -->
+  <section id="hero">
+    <div class="hero-eyebrow">Founded in Melbourne</div>
+
+    <h1 class="hero-headline">
+      Genesis Block<br />Advisory
+    </h1>
+
+    <p class="hero-tagline">
+      Australia's first regulatory affairs boutique<br />specialising in virtual assets.
+    </p>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-number">60</div>
+        <div class="hero-stat-label">Senate citations</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">19</div>
+        <div class="hero-stat-label">Commercial clients advised<br />across Australia</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">#1</div>
+        <div class="hero-stat-label">Australia's first virtual asset<br />regulatory affairs boutique</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">2021</div>
+        <div class="hero-stat-label">est.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 2: ABOUT GENESIS BLOCK + CHLOE WHITE BIO
+       Two-column layout. Edit both columns independently.
+       LEFT COLUMN: About Genesis Block
+       RIGHT COLUMN: Chloe White biography
+  ============================================================ -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <!-- LEFT: About Genesis Block -->
+        <div class="about-col">
+          <div class="section-label">The Firm</div>
+          <h2>Australia's first.<br />Still making waves.</h2>
+          <div class="divider"></div>
+
+          <!-- EDIT: About Genesis Block copy -->
+          <p>
+            Genesis Block Advisory was founded in June 2021 — the moment Australia's virtual asset
+            industry needed a dedicated regulatory affairs practice and none existed. We were first,
+            and we built the template others followed.
+          </p>
+          <p>
+            We serve exchanges, brokerages, asset managers, listed companies, and early-stage
+            start-ups navigating Australia's digital asset regulatory landscape. Our work spans policy
+            submissions, government relations, regulatory compliance, risk management, and executive
+            briefings across the full digital asset value chain.
+          </p>
+          <p>
+            Our most significant contribution to Australian policy: the most-cited independent
+            submission to the Senate's Bragg Inquiry — 46 citations, more than any other industry
+            paper — directly resulting in adopted recommendations that paved the path for 
+            Australia's Digital Assets Framework Bill.
+          </p>
+          <!-- END EDIT -->
+
+          <div style="margin-top: 24px;">
+            <!-- Riskmastery URL -->
+            <a href="https://riskmastery.xyz" target="_blank" rel="noopener" class="about-link">
+              Global advisory practice → riskmastery ↗
+            </a>
+            <!-- Chloe White personal site URL -->
+            <a href="https://chloewhite.info" target="_blank" rel="noopener" class="about-link">
+              Chloe White → personal site ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- RIGHT: Chloe White Bio -->
+        <div class="about-col">
+          <div class="section-label">Founder</div>
+          <h2>Chloe White</h2>
+          <div class="divider"></div>
+
+          <!-- EDIT: Chloe White biography copy -->
+          <p>
+            Chloe White is one of Australia's most credentialled experts at the intersection of
+            government policy, financial markets, and emerging technology — the economist who helped
+            build digital asset regulation from the ground up, in Australia and internationally.
+          </p>
+          <p>
+            Over a 15-year career spanning Commonwealth Treasury, the Australian Government's National
+            Blockchain Roadmap, and a foundational advisory role at Dubai's Virtual Assets Regulatory
+            Authority (VARA), she has shaped the rules that govern the digital asset industry across
+            multiple jurisdictions. Following the success of Genesis Block's launch in Australia, Chloe
+            founded her global practice, Riskmastery, and now serves clients internationally.
+          </p>
+          <p>
+            She is recognised in the Top 50 Most Influential Australians in Blockchain three
+            consecutive years (2023, 2024, 2025), is a dual Blockies Award winner, and is represented
+            by the Saxton Group — Australia's premier speakers' bureau.
+          </p>
+          <!-- END EDIT -->
+
+          <div class="award-chips">
+            <span class="award-chip highlight">Former Regulator</span>
+            <span class="award-chip highlight">AFR Featured</span>
+            <span class="award-chip highlight">ABC News</span>
+            <span class="award-chip">2× Blockies Winner</span>
+            <span class="award-chip">3× Top 50 Impact List by Blockchain APAC</span>
+            <span class="award-chip">Saxton Group Speaker</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 3: INFOGRAPHICS — Commercial Clients Column Chart
+  ============================================================ -->
+  <section id="infographics">
+    <div class="container">
+      <div class="section-label" style="text-align:center;">Impact at a Glance</div>
+      <h2 style="text-align:center;">Trusted by Australia's leading brands</h2>
+      <p style="text-align:center;color:var(--grey-400);margin-bottom:48px;">Visualising Genesis Block's commercial 
+        reach across Australia's digital asset industry.</p>
+
+      <div class="chart-wrapper">
+        <div class="chart-title">Genesis Block's Commercial Clients</div>
+
+        <div class="chart-area">
+          <!-- Y-axis label -->
+          <div class="y-axis-label">Number of Unique Clients</div>
+
+          <!-- Horizontal gridlines: 40px per unit, steps at 2,4,6,8 = 80,160,240,320px -->
+          <div class="gridlines">
+            <div class="gridline" style="bottom: 80px;"></div>   <!-- 2 -->
+            <div class="gridline" style="bottom: 160px;"></div>  <!-- 4 -->
+            <div class="gridline" style="bottom: 240px;"></div>  <!-- 6 -->
+            <div class="gridline" style="bottom: 320px;"></div>  <!-- 8 (ceiling) -->
+          </div>
+
+          <!-- Columns — max value is 6, chart ceiling is 8 for breathing room -->
+          <!-- Bar heights: value / 8 * 100% of the chart-area height -->
+          <!-- chart-area is 320px tall; labels sit outside this height via col-group overflow -->
+          <div class="columns">
+
+            <!-- Exchange Platforms = 5 → 5/8 = 62.5% -->
+            <div class="col-group">
+              <div class="col-bar-stack">
+                <div class="col-value">5</div>
+                <div class="col-bar" style="height:200px;"></div>
+              </div>
+              <div class="col-label">Exchange<br>Platforms</div>
+            </div>
+
+            <!-- Brokerage Firms = 3 → 3/8 = 37.5% -->
+            <div class="col-group">
+              <div class="col-bar-stack">
+                <div class="col-value">3</div>
+                <div class="col-bar" style="height:120px;"></div>
+              </div>
+              <div class="col-label">Brokerage<br>Firms</div>
+            </div>
+
+            <!-- Asset Management = 3 → 3/8 = 37.5% -->
+            <div class="col-group">
+              <div class="col-bar-stack">
+                <div class="col-value">3</div>
+                <div class="col-bar" style="height:120px;"></div>
+              </div>
+              <div class="col-label">Asset<br>Management</div>
+            </div>
+
+            <!-- Industry Bodies = 2 → 2/8 = 25% -->
+            <div class="col-group">
+              <div class="col-bar-stack">
+                <div class="col-value">2</div>
+                <div class="col-bar" style="height:80px;"></div>
+              </div>
+              <div class="col-label">Industry<br>Bodies</div>
+            </div>
+
+            <!-- Banking & Other = 6 → 6/8 = 75% -->
+            <div class="col-group">
+              <div class="col-bar-stack">
+                <div class="col-value">6</div>
+                <div class="col-bar" style="height:240px;"></div>
+              </div>
+              <div class="col-label">Banking<br>&amp; Other</div>
+            </div>
+
+          </div>
+        </div>
+
+        <p class="chart-caption">
+          These figures exclude retainers, directorships, individual appointments, and pro bono initiatives. 
+          They relate only to commercial engagements in Australia for Genesis Block Pty Ltd.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 4: CAPABILITIES DECK
+       HOW TO EMBED YOUR PITCH DECK:
+       Option A — PDF: replace the deck-placeholder div with:
+         <iframe src="genesis-block-capabilities.pdf#toolbar=0"></iframe>
+       Option B — Google Slides: replace with:
+         <iframe src="YOUR_GOOGLE_SLIDES_PUBLISH_URL" allowfullscreen></iframe>
+       Option C — OneDrive/PowerPoint Online: replace with:
+         <iframe src="YOUR_ONEDRIVE_EMBED_URL" allowfullscreen></iframe>
+  ============================================================ -->
+  <section id="deck">
+    <div class="container">
+      <div class="section-label">Capabilities</div>
+      <h2>Our work, in brief</h2>
+      <p>
+        A concise overview of Genesis Block Advisory's landmark
+        contribution to Australia's virtual asset regulatory framework.
+      </p>
+
+      <div class="deck-embed">
+        <!-- EDIT: PDF filename — rename the file or update the src path below to match -->
+        <iframe src="genesis-block-capabilities.pptx.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" allowfullscreen></iframe>
+        <!-- Shown only on mobile (≤640px) in place of the iframe -->
+        <div class="deck-mobile-cta">
+          <p>Embedded decks don't display well on small screens.</p>
+          <a href="genesis-block-capabilities.pptx.pdf" target="_blank" rel="noopener" class="btn btn-primary">
+            View Capabilities Deck ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECTION 6: CONTACT
+       Edit heading, subtext, and button links below
+  ============================================================ -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-label" style="color: var(--orange-light);">Get in touch</div>
+      <h2>Work with us</h2>
+
+      <!-- EDIT: Contact section subtext -->
+      <p>
+        Genesis Block Advisory works with exchanges, asset managers, listed companies,
+        and start-ups navigating Australia's virtual asset regulatory landscape.
+      </p>
+      <!-- END EDIT -->
+
+      <div class="contact-buttons">
+        <!-- EDIT: Update LinkedIn URL -->
+        <a href="https://www.linkedin.com/in/policyeconomist/" target="_blank" rel="noopener" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Connect on LinkedIn
+        </a>
+        <!-- EDIT: Update Saxton Group URL -->
+        <a href="https://www.saxton.com.au/speakers/chloe-white/" target="_blank" rel="noopener" class="btn btn-secondary">
+          Speaking enquiries — Saxton Group ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       AS FEATURED IN TICKER
+       To edit outlets: change the text inside .ticker-outlet spans
+       The track is duplicated to create a seamless loop — edit BOTH copies
+  ============================================================ -->
+  <div class="ticker-bar">
+    <div class="ticker-track">
+      <!-- Copy 1 of ticker content -->
+      <span class="ticker-dot">◆</span>
+      <span class="ticker-label">As featured in</span>
+      <span class="ticker-dot">◆</span>
+      <span class="ticker-outlet">Australian Financial Review</span>
+      <span class="ticker-dot">◆</span>
+      <span class="ticker-outlet">ABC News</span>
+      <span class="ticker-dot">◆</span>
+      <span class="ticker-outlet">ABC Radio</span>
+      <span class="ticker-dot">◆</span>
+      <span class="ticker-outlet">Four Corners</span>
+      <span class="ticker-dot">◆</span>
+      <span class="ticker-outlet">Reuters</span>
+      <span class="ticker-dot">◆</span>
+      <span class="ticker-outlet">7 News</span>
+      <span class="ticker-dot">◆</span>
+      <span class="ticker-outlet">Financial Standard</span>
+      <span class="ticker-dot">◆</span>
+      <span class="ticker-outlet">Cointelegraph</span>
+      <span class="ticker-dot">◆</span>
+      <span class="ticker-outlet">ausbiz TV</span>
+      <span class="ticker-dot">◆</span>
+      <span class="ticker-outlet">INTHEBLACK</span>
+      <span class="ticker-dot">◆</span>
+      <span class="ticker-outlet">The Guardian</span>
+      <!-- Copy 2 — required for seamless loop, keep identical to Copy 1 -->
+      <span class="ticker-dot">◆</span>
+      <span class="ticker-label">As featured in</span>
+      <span class="ticker-dot">◆</span>
+      <span class="ticker-outlet">Australian Financial Review</span>
+      <span class="ticker-dot">◆</span>
+      <span class="ticker-outlet">ABC News</span>
+      <span class="ticker-dot">◆</span>
+      <span class="ticker-outlet">ABC Radio</span>
+      <span class="ticker-dot">◆</span>
+      <span class="ticker-outlet">Four Corners</span>
+      <span class="ticker-dot">◆</span>
+      <span class="ticker-outlet">Reuters</span>
+      <span class="ticker-dot">◆</span>
+      <span class="ticker-outlet">7 News</span>
+      <span class="ticker-dot">◆</span>
+      <span class="ticker-outlet">Financial Standard</span>
+      <span class="ticker-dot">◆</span>
+      <span class="ticker-outlet">Cointelegraph</span>
+      <span class="ticker-dot">◆</span>
+      <span class="ticker-outlet">ausbiz TV</span>
+      <span class="ticker-dot">◆</span>
+      <span class="ticker-outlet">INTHEBLACK</span>
+      <span class="ticker-dot">◆</span>
+      <span class="ticker-outlet">The Guardian</span>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       FOOTER
+       Edit copyright text and links below
+  ============================================================ -->
+  <footer>
+    <p>
+      © Genesis Block Pty Ltd &nbsp;·&nbsp;
+      <a href="https://chloewhite.info" target="_blank" rel="noopener">Chloe White</a>
+    </p>
+  </footer>
+
+</body>
+</html>
